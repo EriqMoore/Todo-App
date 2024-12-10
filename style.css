@@ -73,7 +73,16 @@ body {
 
 .bottom-half button:hover {
   background-color: rgba(218, 228, 233, 0.53);
+ 
 }
+#all-btn.active, 
+#active-btn.active, 
+#completed-btn.active {
+  background-color: #1f2937;
+  color:#fff;
+}
+
+
 
 
 

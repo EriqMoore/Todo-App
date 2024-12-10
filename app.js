@@ -71,21 +71,25 @@ const activeBtn = document.getElementById('active-btn');
 const completedBtn = document.getElementById('completed-btn');
 
 // General filter function for tasks based on status
-function filterTasks(status) {
+function filterTasks(status, clickedButton) {
   const tasks = taskList.querySelectorAll('li');
+
+  // Filter tasks based on status
   tasks.forEach(task => {
     const checkBox = task.querySelector('input[type="checkbox"]');
     const isChecked = checkBox.checked;
 
-    // Show or hide tasks based on the status
     task.style.display = 
-      (status === 'all' || (status === 'active' && !isChecked) || (status === 'completed' && isChecked)) 
-      ? 'flex' : 'none';
+      (status === 'all' || (status === 'active' && !isChecked) || (status === 'completed' && isChecked)) ? 'flex' : 'none';
   });
-  
+
+  // Manage active button state
+  const filterButtons = [allBtn, activeBtn, completedBtn];
+  filterButtons.forEach(button => button.classList.remove('active')); // Remove 'active' class from all buttons
+  clickedButton.classList.add('active'); // Add 'active' class to the clicked button
 }
 
 // Event listeners for the filter buttons
-allBtn.addEventListener('click', () => filterTasks('all'));
-activeBtn.addEventListener('click', () => filterTasks('active'));
-completedBtn.addEventListener('click', () => filterTasks('completed'));
+allBtn.addEventListener('click', () => filterTasks('all', allBtn));
+activeBtn.addEventListener('click', () => filterTasks('active', activeBtn));
+completedBtn.addEventListener('click', () => filterTasks('completed', completedBtn));
