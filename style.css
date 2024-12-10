@@ -20,7 +20,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 25vh;
+  height: 35vh;
   min-width: 90% ;
   background: #fff;
   position: absolute;
@@ -32,6 +32,7 @@ body {
 }
 .bottom-half {
   display: flex;
+  gap: 12px;
 }
 
 .strike-through {
@@ -58,4 +59,22 @@ button {
 
 button:hover {
   background-color: darkred;
+}
+
+@media (width < 550px) {
+  .mytasksbox {
+    height: 50vh;
+    min-width: 90% ;
+    background: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 8px;
+    
+  }
+
+  input{
+    width: 12rem;
+  }
 }
