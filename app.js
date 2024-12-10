@@ -7,7 +7,12 @@ const itemsLeft = document.querySelector("#items-left");
 // Updates Items Left
 function updateItemsLeft() {
   const uncheckedTasks = taskList.querySelectorAll('li input[type="checkbox"]:not(:checked)').length;
-  itemsLeft.textContent = `${uncheckedTasks} items left`;
+  if (uncheckedTasks === 1){
+    itemsLeft.textContent = `${uncheckedTasks} item left`;
+  }else{
+    itemsLeft.textContent = `${uncheckedTasks} items left`;
+  }
+  
 
   
 }
@@ -26,7 +31,7 @@ addButton.addEventListener('click', () => {
 
   // Create list item
   const listItem = document.createElement('li');
-  const taskText = document.createElement('span');
+  const taskText = document.createElement('p');
   taskText.textContent = task;
 
   // Create checkbox
@@ -42,7 +47,8 @@ addButton.addEventListener('click', () => {
 
   // Create delete button
   const deleteButton = document.createElement('button');
-  deleteButton.textContent = 'Delete';
+  deleteButton.classList.add("delete-btn")
+  deleteButton.textContent = 'X';
   deleteButton.addEventListener('click', () => {
     taskList.removeChild(listItem); // Remove the task when button clicked
     updateItemsLeft();
@@ -76,6 +82,7 @@ function filterTasks(status) {
       (status === 'all' || (status === 'active' && !isChecked) || (status === 'completed' && isChecked)) 
       ? 'flex' : 'none';
   });
+  
 }
 
 // Event listeners for the filter buttons
