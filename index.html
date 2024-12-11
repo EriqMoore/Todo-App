@@ -7,27 +7,22 @@
   <title>To-Do App</title>
 </head>
 <body>
-
   <div class="mytasksbox">
     <div class="top-half">
       <h1 class="my-task-header">My Tasks</h1>
-      <input type="text" id="todo-input" placeholder="Add new task..." />
-      <button class="add-btn">+</button>
-      <ul id="task-list"></ul>
+      <input type="text" id="todo-input" placeholder="Add new task..." aria-label="Task input field">
+      <button class="add-btn" aria-label="Add task">+</button>
+      <ul id="task-list" aria-live="polite"></ul>
     </div>
     <div class="bottom-half">
       <button id="all-btn">All</button>
       <button id="active-btn">Active</button>
       <button id="completed-btn">Completed</button>
-      
     </div>
     <div class="items-left-container">
       <p id="items-left">0 tasks left</p>
     </div>
-   
   </div>
- 
-
   <script src="app.js"></script>
 </body>
 </html>
