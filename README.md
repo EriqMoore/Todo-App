@@ -38,10 +38,15 @@ This is an enhanced version of a To-Do List application. It provides an intuitiv
 
 - JavaScript: Functional logic for task management.
 
-# Future Enhancements
+## Future Enhancements
 
 - Add local storage support to persist tasks across sessions.
 
 - Add priority levels for tasks.
 
+## Live Link
+
+Feel free to check it out and let me know what you think!
+
+https://eriqmoore.github.io/Todo-App/
 
