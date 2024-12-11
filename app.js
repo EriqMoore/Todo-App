@@ -8,9 +8,9 @@ const itemsLeft = document.querySelector("#items-left");
 function updateItemsLeft() {
   const uncheckedTasks = taskList.querySelectorAll('li input[type="checkbox"]:not(:checked)').length;
   if (uncheckedTasks === 1){
-    itemsLeft.textContent = `${uncheckedTasks} item left`;
+    itemsLeft.textContent = `${uncheckedTasks} task left`;
   }else{
-    itemsLeft.textContent = `${uncheckedTasks} items left`;
+    itemsLeft.textContent = `${uncheckedTasks} tasks left`;
   }
   
 
@@ -37,6 +37,7 @@ addButton.addEventListener('click', () => {
   // Create checkbox
   const checkBox = document.createElement('input'); 
   checkBox.setAttribute("type", "checkbox");
+  checkBox.classList.add('task-checkbox')
   checkBox.setAttribute('aria-label', 'Mark task as complete');
   checkBox.addEventListener('change', () => {
     taskText.classList.toggle("strike-through", checkBox.checked);

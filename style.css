@@ -1,38 +1,49 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: rgba(218, 228, 233, 0.53);
+:root {
+  --primary-bg: #1f2937;
+  --primary-bg-hover: #1f2937c6;
+  --secondary-bg: rgba(218, 228, 233, 0.53);
+  --text-color: #fff;
+  --border-color: rgba(0, 0, 0, 0.2);
+  --strike-through-color: gray;
 }
 
-.top-half h1{
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--secondary-bg);
+}
+
+.top-half h1 {
   text-align: center;
 }
 
-#task-list{
+#task-list {
   padding: 0;
 }
+
 #task-list li {
   margin: 10px 0;
   display: flex;
   justify-content: space-between;
   background-color: rgba(218, 228, 233, 0.199);
   border-radius: 2px;
-
 }
+
 .mytasksbox {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 35vh;
-  min-width: 90% ;
+  width: 80%;
   background: #fff;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 8px;
-  
+  box-shadow: 10px 10px 10px 5px var(--border-color);
 }
+
 .bottom-half {
   display: flex;
   gap: 12px;
@@ -40,77 +51,88 @@ body {
 
 .strike-through {
   text-decoration: line-through;
-  color: gray;
+  color: var(--strike-through-color);
 }
 
-#todo-input{
+
+#todo-input {
   padding: 15px 10px;
-  width: 25rem ;
+  width: 25rem;
   border-radius: 8px;
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.2);
+  box-shadow: inset 0 0 0 1px var(--border-color);
   border: none;
-
 }
-.bottom-half button, .add-btn {
+
+.bottom-half button,
+.add-btn {
   border: none;
   padding: 15px 20px;
   border-radius: 5px;
   cursor: pointer;
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.2);
+  box-shadow: inset 0 0 0 1px var(--border-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
-.add-btn{
-  background-color: #1f2937;
-  color: #fff;
+
+.add-btn {
+  background-color: var(--primary-bg);
+  color: var(--text-color);
   font-size: 18px;
   padding: 12px 20px;
 }
-.add-btn:hover{
-  background-color: #1f2937c6;
+
+.add-btn:hover {
+  background-color: var(--primary-bg-hover);
 }
 
 .bottom-half button:hover {
-  background-color: rgba(218, 228, 233, 0.53);
- 
+  background-color: var(--secondary-bg);
 }
 
-.bottom-half button{
+.bottom-half button {
   background-color: #fff;
 }
-#items-left{
+
+#items-left {
   color: grey;
   font-size: 14px;
-
 }
-#all-btn.active, 
-#active-btn.active, 
+
+#all-btn.active,
+#active-btn.active,
 #completed-btn.active {
-  background-color: #1f2937;
-  color:#fff;
+  background-color: var(--primary-bg);
+  color: var(--text-color);
 }
 
-li input{
+.task-checkbox {
   width: 25px;
 }
 
-
-
-.delete-btn{
+.delete-btn {
   background-color: transparent;
   border-color: transparent;
   margin-right: 10px;
 }
 
-.delete-btn:hover{
+.delete-btn:hover {
   cursor: pointer;
 }
 
 
-@media (width < 550px) {
+
+@media (max-width: 768px) {
   .mytasksbox {
-    min-height: 50vh;
+    min-height: 45vh;
+    width: 90%;
   }
 
-  #todo-input{
-    width: 12rem;
+  #todo-input {
+    width: 15rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #todo-input {
+    width: 10rem;
   }
 }
