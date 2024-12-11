@@ -1,5 +1,6 @@
 # To-Do List Project
 
+![To-Do List Project Image](image.png)
 
 ## Project Overview
 
