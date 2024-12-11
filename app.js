@@ -7,27 +7,17 @@ const itemsLeft = document.querySelector("#items-left");
 // Updates Items Left
 function updateItemsLeft() {
   const uncheckedTasks = taskList.querySelectorAll('li input[type="checkbox"]:not(:checked)').length;
-  if (uncheckedTasks === 1){
-    itemsLeft.textContent = `${uncheckedTasks} task left`;
-  }else{
-    itemsLeft.textContent = `${uncheckedTasks} tasks left`;
-  }
-  
-
-  
+  itemsLeft.textContent = uncheckedTasks === 1 ? `${uncheckedTasks} task left` : `${uncheckedTasks} tasks left`;
 }
 
 // Event Listener for add tasks
 addButton.addEventListener('click', () => {
-
-
   const task = input.value.trim();
 
   if (task === '') {
     alert('Task cannot be empty!');
     return;
   }
-  
 
   // Create list item
   const listItem = document.createElement('li');
@@ -35,24 +25,26 @@ addButton.addEventListener('click', () => {
   taskText.textContent = task;
 
   // Create checkbox
-  const checkBox = document.createElement('input'); 
+  const checkBox = document.createElement('input');
   checkBox.setAttribute("type", "checkbox");
-  checkBox.classList.add('task-checkbox')
+  checkBox.classList.add('task-checkbox');
   checkBox.setAttribute('aria-label', 'Mark task as complete');
   checkBox.addEventListener('change', () => {
     taskText.classList.toggle("strike-through", checkBox.checked);
     updateItemsLeft();
-
   });
-  
 
   // Create delete button
   const deleteButton = document.createElement('button');
-  deleteButton.classList.add("delete-btn")
+  deleteButton.classList.add("delete-btn");
   deleteButton.textContent = 'X';
   deleteButton.addEventListener('click', () => {
-    taskList.removeChild(listItem); // Remove the task when button clicked
-    updateItemsLeft();
+    // Add animation class for smooth removal
+    listItem.classList.add('fade-out');
+    listItem.addEventListener('animationend', () => {
+      taskList.removeChild(listItem); // Remove the task after animation ends
+      updateItemsLeft();
+    });
   });
 
   // Append elements in the correct order
@@ -60,8 +52,11 @@ addButton.addEventListener('click', () => {
 
   // Append the list item to the task list
   taskList.appendChild(listItem);
-  // Updates the number of items left
 
+  // Add animation class for smooth addition
+  listItem.classList.add('fade-in');
+
+  // Updates the number of items left
   updateItemsLeft();
   input.value = ''; // Clear input
 });
@@ -80,8 +75,7 @@ function filterTasks(status, clickedButton) {
     const checkBox = task.querySelector('input[type="checkbox"]');
     const isChecked = checkBox.checked;
 
-    task.style.display = 
-      (status === 'all' || (status === 'active' && !isChecked) || (status === 'completed' && isChecked)) ? 'flex' : 'none';
+    task.style.display = (status === 'all' || (status === 'active' && !isChecked) || (status === 'completed' && isChecked)) ? 'flex' : 'none';
   });
 
   // Manage active button state

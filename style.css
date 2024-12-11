@@ -26,6 +26,7 @@ body {
   justify-content: space-between;
   background-color: rgba(218, 228, 233, 0.199);
   border-radius: 2px;
+  transition: 10s;
 }
 
 .mytasksbox {
@@ -134,5 +135,35 @@ body {
 @media (max-width: 480px) {
   #todo-input {
     width: 10rem;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-out {
+  animation: fadeOut 0.3s ease-in-out;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(10px);
   }
 }
