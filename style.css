@@ -27,6 +27,7 @@ body {
   background-color: rgba(218, 228, 233, 0.199);
   border-radius: 2px;
   transition: 10s;
+  padding-left: 12px;
 }
 
 .mytasksbox {
@@ -106,7 +107,8 @@ body {
 }
 
 .task-checkbox {
-
+  transform: scale(1.5);
+  padding-right: 12px ;
   margin-top: auto;
   margin-bottom: auto;
 }
