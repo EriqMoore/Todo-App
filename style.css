@@ -106,7 +106,9 @@ body {
 }
 
 .task-checkbox {
-  width: 25px;
+
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .delete-btn {
